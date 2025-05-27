@@ -25,14 +25,46 @@ const Cadastro = (props) => {
                         />
                     </div>
 
-                    <div className="campo_cad_genero" style={{ display: props.visibilidade }}>
-                        <select name="" id="">
-                            <option value="" disabled selected>Tipo Evento</option>
-                            <option value="">Esportes</option>
-                            <option value="">Digitação</option>
-                            <option value="">Batata Palha</option>
+                <div className="campo_cad_data" style={{display: props.visibilidade}}>
+                    <input type="date" 
+                    value = {props.valorDate}
+                    onChange={(e) => props.setValorDate(e.target.value)}
+                    placeholder="Data do Evento"
+                    />
+
+                </div>
+
+                    <div className="campo_cad_tipoevento" style={{ display: props.visibilidade }}>
+                        <label htmlFor="Nome"></label>
+                            <select name="Tipo De Evento" id=""
+                                value={props.valorSelect}
+                                onChange={(e) => props.setValorSelect(e.target.value)}
+                            >
+
+                                <option value="" disabled selected>Tipo de Evento</option>
+                                {props.lista && props.lista.length > 0 && props.lista.map((item) => (
+                                    (
+                                        <option value={item.idTipoEvento}>{item.tituloTipoEvento}</option>
+                                    ))
+                                )}
+                            </select>
+                    </div>
+
+                    <div className="campo_cad_instituicao" style={{display:props.visibilidade}}>
+                        <select name="" id=""
+                            value={props.valorSelect2}
+                            onChange={(e) => props.setValorText(e.target.value)}
+                            >
+                            <option selected disabled value="">WorldSKills</option>
                         </select>
                     </div>
+
+                    <div className="campo_cad_descricao" style={{display: props.visibilidade}}>
+                        <textarea name="" id="" placeholder="Descrição"
+                        value={props.valorText}
+                        onChange={(e) => props.setValorText(e.target.value)} ></textarea>                            
+                    </div>
+                    
                     <Botao nomeDoBotao={props.NomeDoBotao} />
                 </div>
             </form>

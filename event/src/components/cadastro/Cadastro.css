@@ -27,6 +27,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
     /* flex-direction: column; */
 }
 
@@ -44,7 +45,35 @@
     outline: none;
 }
 
-.campo_cad_genero select{
+.campo_cad_data input{
+    margin-bottom: 70px;
+    width: 356px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+
+.campo_cad_instituicao select{
+    margin-bottom: 70px;
+    width: 356px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+
+.campo_cad_descricao textarea {
+    margin-bottom: 40px;
+    width: 356px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+
+}
+
+.campo_cad_tipoevento select{
     margin-bottom: 70px;
     width: 356px;
     border-top: none;
@@ -60,6 +89,7 @@
 
 .section_cadastro {
     height: 400px;
+    margin-bottom: 250px;
 }
 
 @media screen and (max-width: 880px) {

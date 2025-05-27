@@ -58,7 +58,7 @@ const CadastroTipoEvento = () => {
     async function listarTipoEvento(){
         try {
             const resposta = await api.get("TiposEventos");
-            console.log(resposta.data);
+            console.log(resposta);
             setListaTipoEvento(resposta.data);
         } catch (error) {
             console.log(error);
@@ -79,7 +79,7 @@ const CadastroTipoEvento = () => {
     }).then(async (result) => {
         if (result.isConfirmed) {
             try {
-                await api.delete(`TiposEventos/${id}`);
+                await api.delete(`TiposEventos/${id.idTipoEvento}`);
                 
             } catch (error) {
                 console.log(error);
@@ -159,9 +159,11 @@ useEffect(() => {
             
             lista = {listaTipoEvento}
 
-            deletarTipoEvento = {deletarTipoEvento}
+            deletar = {deletarTipoEvento}
 
             funcEditar = {editarTipoEvento}
+
+            tipoLista = "TiposEventos"
 
         />
         </main>
