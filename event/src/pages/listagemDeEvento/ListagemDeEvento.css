@@ -58,10 +58,16 @@
     
 }
 
+.tabelas table{
+    border-collapse: collapse;
+} 
+
 .itens td {
     padding: 28px 0 0 1px;
     border-bottom: 1px solid black;
 }
+
+
 
 .select {
     border: none;

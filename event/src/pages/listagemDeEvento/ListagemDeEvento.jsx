@@ -8,6 +8,8 @@ import Informacoes from "../../assets/img/informacoes (1) 1.png";
 import api from '../../Services/services';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale'; 
+import Modal from "../../components/modal/Modal";
+
 
 const ListagemDeEvento = () => {
     
@@ -53,40 +55,42 @@ const ListagemDeEvento = () => {
                     
                 </select>
 
-                <table>
-                <thead>
-                    <tr className="cabecalhos">
-                        <th>Titulo</th>
-                        <th>Data do evento</th>
-                        <th>Tipo Evento</th>
-                        <th>Descrição</th>
-                        <th>Comentarios</th>
-                        <th>Participar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {listaEvento.map((item) => (
-                    <tr className="itens">
-                        <td data-cell="Titulo">{item.nomeEvento}</td>
-                        <td data-cell="Data">{item.dataEvento ? format(new Date(item.dataEvento), "dd/MM/yyyy", {locale: ptBR}) : ""}
-                        </td>
-                        <td data-cell="Nome">{item.tiposEvento?.tituloTipoEvento}</td>
-                        <td data-cell="Descrição"><img src={Informacoes} alt="" /></td>
-                        <td data-cell="Comentar"><img src={Comentario} alt="" /></td>
-                        <td data-cell="Participar"><Toggle/></td>
-                    </tr>
-                    ))}
-                </tbody>
-                </table>
-            </div>
-        </section>
-
-
-
-</main>
+                    <table>
+                        <thead>
+                        <tr className="cabecalhos">
+                            <th>Titulo</th>
+                            <th>Data do evento</th>
+                            <th>Tipo Evento</th>
+                            <th>Descrição</th>
+                            <th>Comentarios</th>
+                            <th>Participar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {listaEvento.map((item) => (
+                        <tr className="itens">
+                            <td data-cell="Titulo">{item.nomeEvento}</td>
+                            <td data-cell="Data">{item.dataEvento ? format(new Date(item.dataEvento), "dd/MM/yyyy", {locale: ptBR}) : ""}
+                            </td>
+                            <td data-cell="Nome">{item.tiposEvento?.tituloTipoEvento}</td>
+                            <td data-cell="Descrição"><img src={Informacoes} alt=""/></td>
+                            <td data-cell="Comentar"><img src={Comentario} alt="" /></td>
+                            <td data-cell="Participar"><Toggle/></td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
 
         <Footer/>
-        </>
+        
+        <Modal/>
+    </>
+
     )
 }
 export default ListagemDeEvento;
+
+//Atalho para criar componente -> rafce 
