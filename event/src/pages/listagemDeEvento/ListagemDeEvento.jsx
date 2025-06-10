@@ -82,12 +82,12 @@ const ListagemDeEvento = () => {
 
     async function manipularPresenca(idEvento, presenca, idPresenca) {
         try {
-            console.log("aaaaaaa");
+            // console.log("aaaaaaa");
             
             if (presenca && idPresenca !== "") {
                 //atualizacao: para FALSE
                 await api.put(`PresencasEventos/${idPresenca}`,{situacao: false});
-                Swal.fire('Removido', 'Sua presença foi removida.', 'success');
+                Swal.fire('Removido!', 'Sua presença foi removida.', 'success');
             } else if (idPresenca !== ""){
                 //atualizacao: situacao TRUE
                 await api.put(`PresencasEventos/${idPresenca}`, {situacao: true});
