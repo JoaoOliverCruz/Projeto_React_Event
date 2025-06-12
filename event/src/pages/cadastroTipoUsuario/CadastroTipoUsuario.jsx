@@ -97,7 +97,7 @@ const CadastroTipoUsuario = () => {
                 title: "Modifique o seu Tipo Usuario",
                 input: "text",
                 inputLabel: "Novo Tipo Usuario",
-                inputValue: tipousuario.titulotipousuario,
+                inputValue: tipousuario.tituloTipoUsuario,
             showCancelButton: true,
         inputValidator: (value) => {
             if (!value) {

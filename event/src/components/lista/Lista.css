@@ -56,7 +56,7 @@
     width: 100%;
     margin-top: 30px;
     color: white;
-    margin-right: 150px;
+    margin-right: 90px;
     
 
 }
@@ -72,9 +72,17 @@
     width: 20px;
 }
 
+.cabecalho_tabela :nth-child(2) {
+    width: 200px;   
+}
+
+.cabecalho_tabela :nth-child(3) {
+    width: 200px;
+}
+
 .cabecalho_tabela th {
     width: 100px;
-    
+
     font-weight: 500;
 }
 

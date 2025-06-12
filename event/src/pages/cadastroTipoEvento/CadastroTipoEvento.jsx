@@ -100,10 +100,10 @@ const CadastroTipoEvento = () => {
  async function editarTipoEvento (tipoevento) {
         // console.log(genero);
         const{ value: novoTipoEvento } = await Swal.fire({
-                title: "Modifique o seu Gênero",
+                title: "Modifique o seu Tipo Evento",
                 input: "text",
                 inputLabel: "Novo Tipo Evento",
-                inputValue: tipoevento.titulotipoevento,
+                inputValue: tipoevento.tituloTipoEvento,
             showCancelButton: true,
         inputValidator: (value) => {
             if (!value) {

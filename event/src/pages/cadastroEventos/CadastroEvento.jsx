@@ -204,13 +204,13 @@ const CadastroEvento = () => {
 
     useEffect(() => {
         listarTipoEvento();
-        
-    }, [listaEvento]);
+    
+    }, [listaTipoEvento]);
 
      useEffect(() => {
-        
         listarEvento();
-    }, []);
+
+    }, [listaEvento]);
 
     return(
         <>
