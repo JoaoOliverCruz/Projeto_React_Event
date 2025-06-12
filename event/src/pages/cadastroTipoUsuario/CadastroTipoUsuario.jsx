@@ -132,6 +132,7 @@ const CadastroTipoUsuario = () => {
         <>
         <Header
             tituloHeader = "Administrador"
+            botao_logar = "none" 
         />
         <main>
         <Cadastro 

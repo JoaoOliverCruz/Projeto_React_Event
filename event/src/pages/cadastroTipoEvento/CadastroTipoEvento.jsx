@@ -139,6 +139,7 @@ useEffect(() => {
         <>
         <Header
             tituloHeader = "Administrador"
+            botao_logar = "none"
         />
         <main>
         <Cadastro 

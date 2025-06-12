@@ -5,8 +5,8 @@ function App() {
   return (
     <>
    {/*chamar as paginas */} 
+    
     <Rotas/>
-   
     </>
   );
 }

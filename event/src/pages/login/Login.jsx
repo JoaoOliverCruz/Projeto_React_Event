@@ -8,6 +8,7 @@ import { userDecodeToken } from "../../auth/Auth";
 import secureLocalStorage from "react-secure-storage";
 
 import {useNavigate } from "react-router";
+import {useAuth} from "../../contexts/AuthContext";
 
 
 
@@ -16,6 +17,8 @@ const Login = () => {
     const [senha, setSenha] = useState("");
 
     const navigate = useNavigate();
+
+    const {setUsuario} = useAuth();
     
 
     async function realizarAutenticacao(e) {
@@ -25,41 +28,41 @@ const Login = () => {
             email: email,
             senha: senha
         }
-        if (senha.trim() !== "" || email.trim() !== "") {
+        if (senha.trim() != "" || email.trim() != "") {
             try {
-               const resposta = await api.post("Login", usuario);
+                const resposta = await api.post("Login", usuario);
 
-               const token = resposta.data.token;
-               
-               if (token) {
-                //token sera decodificado:
-                const tokenDecodificado = userDecodeToken(token);
-                console.log("Token decodificado:");
-                console.log(tokenDecodificado.tipoUsuario);
-                
-                secureLocalStorage.setItem("tokenLogin", JSON.stringify(tokenDecodificado));
+                const token = resposta.data.token
+                if(token){
+                    //token será decodificado
+                    const tokenDecodificado = userDecodeToken(token);
+                    // console.log("Token decodificado:");
+                    // console.log(tokenDecodificado);
+                    // console.log("O tipo de usuario e:");
+                    // console.log(tokenDecodificado.tipoUsuario);
 
-                 if(tokenDecodificado.tipoUsuario === "aluno"){
-                     //redirecionar a tela de aluno(Branca)
-                     navigate("/ListarEventos")
-                 }else{
-                     //ele vai me encaminhar para a tela cadastro de evento(vermelha)
-                     navigate("/CadastrarTipoEvento")
-                 }
+                    setUsuario(tokenDecodificado);
+
+                    secureLocalStorage.setItem("tokenLogin", JSON.stringify(tokenDecodificado));
+                    
+                    if(tokenDecodificado.tipoUsuario === "aluno"){
+                        navigate("/ListarEventos")
+                 } else {
+                        navigate("/Cadastro")
+                }
+              }
+             console.log(resposta.data.token);
                 
-               }
-            // console.log(resposta.data.token);
             } catch (error) {
                 console.log(error);
-                alert("Email ou senha invalidos! Para duvidas entre em contato com o suporte.");
+               alert("Email ou senha inválidos, para dúvidas, entre em contato com o suporte")
             }
-            
-        }else{
-            alert("Preencha os campos vazios para realizar o login !")
+        } else {
+            alert("Preencha os campos vazios para realizar o login seu dedin nervoso")
         }
-        //  alert("Ebaa funcao foi chamada")
-        //  console.log("Ebaa funcao foi chamada")
+
     }
+
 
 
     return(

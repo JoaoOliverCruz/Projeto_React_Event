@@ -21,7 +21,7 @@ import api from "../../Services/services"
 
 useEffect(() => {
     listarComentario();
-}, [comentarios])
+}, [])
 
  async function cadastrarComentario(comentario) {
     try {

@@ -11,6 +11,7 @@ import { ptBR } from 'date-fns/locale';
 import Modal from "../../components/modal/Modal";
 import Swal from "sweetalert2";
 
+import {useAuth} from "../../contexts/AuthContext";
 
 const ListagemDeEvento = () => {
 
@@ -21,10 +22,13 @@ const ListagemDeEvento = () => {
     //descrição, idEvento, etc.
     const [modalAberto, setModalAberto] = useState(false);
 
-    const [usuarioId, setUsuarioId] = useState("91444B5C-A2C0-4AA3-B866-FCC6D508B6C8");
-
     //filtro data
     const [filtroData, setFiltroData] = useState(["todos"]);
+
+    const {usuario} = useAuth();
+    // const [usuarioId, setUsuarioId] = useState("91444B5C-A2C0-4AA3-B866-FCC6D508B6C8");
+
+
 
     // const [valorSelectEvento, setvalorSelectEvento] = useState("");
 
@@ -34,7 +38,7 @@ const ListagemDeEvento = () => {
             const eventoBuscado = await api.get("Eventos");
             const todosOsEventos = eventoBuscado.data;
 
-            const respostaPresenca = await api.get ("PresencasEventos/ListarMinhas/"+usuarioId);
+            const respostaPresenca = await api.get ("PresencasEventos/ListarMinhas/" + usuario.idUsuario);
             const minhasPresencas = respostaPresenca.data;
 
             const eventosComPresencas = todosOsEventos.map((atualEvento) => {
@@ -94,7 +98,7 @@ const ListagemDeEvento = () => {
                 Swal.fire('Confirmado!', 'Sua presença foi confirmada.', 'success');
             }else{
                 //cadastrar uma nova presenca
-                await api.post("PresencasEventos", {situacao: true, idUsuario: usuarioId, idEvento: idEvento });
+                await api.post("PresencasEventos", {situacao: true, idUsuario: usuario.idUsuario, idEvento: idEvento });
                 Swal.fire('Confirmado!', 'Sua presenca foi confirmada.', 'success');
             }
 
@@ -130,6 +134,7 @@ const ListagemDeEvento = () => {
         <>
             <Header
                 tituloHeader="Aluno"
+                botao_logar = "none"
             />
             <main>
                 <section className="layout_grid lista_eventos">

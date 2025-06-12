@@ -216,6 +216,7 @@ const CadastroEvento = () => {
         <>
         <Header
             tituloHeader = "Administrador"
+            botao_logar = "none"
         />
         <main>
         <Cadastro 

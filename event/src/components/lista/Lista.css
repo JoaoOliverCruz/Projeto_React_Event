@@ -56,6 +56,8 @@
     width: 100%;
     margin-top: 30px;
     color: white;
+    margin-right: 150px;
+    
 
 }
 
@@ -66,20 +68,13 @@
     
 }
 
-.tabela_cabecalho :first-child {
-    width: 300px;
+.cabecalho_tabela :first-child {
+    width: 20px;
 }
 
-.tabela_cabecalho :nth-child(2) {
-    width: 200px;
-}
-
-.tabela_cabecalho :nth-child(3) {
-    width: 200px;
-}
-
-.tabela_cabecalho th {
+.cabecalho_tabela th {
     width: 100px;
+    
     font-weight: 500;
 }
 
