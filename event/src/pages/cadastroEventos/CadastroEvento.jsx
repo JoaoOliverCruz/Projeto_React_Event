@@ -1,6 +1,6 @@
 import Header from "../../components/header/Header";
 import Cadastro from "../../components/cadastro/Cadastro";
-import Banner from "../../assets/img/undraw_add_information_j2wg 1.png";
+import Banner from "../../assets/img/imgcadastroevento.png";
 import Lista from "../../components/lista/Lista";
 import Footer from "../../components/footer/Footer";
 

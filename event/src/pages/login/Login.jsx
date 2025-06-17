@@ -1,4 +1,4 @@
-import Logo from "../../assets/img/logo1.svg";
+import Logo from "../../assets/img/logologin.png";
 import "./Login.css";
 import Botao from "../../components/botao/Botao";
 import api from '../../Services/services';

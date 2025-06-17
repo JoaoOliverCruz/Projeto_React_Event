@@ -1,6 +1,6 @@
 import Header from "../../components/header/Header";
 import Cadastro from "../../components/cadastro/Cadastro";
-import Banner from "../../assets/img/undraw_add_user_re_5oib 1.png";
+import Banner from "../../assets/img/imgtipoususario.png";
 import Lista from "../../components/lista/Lista";
 import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";

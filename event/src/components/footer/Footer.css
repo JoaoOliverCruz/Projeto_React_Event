@@ -1,14 +1,14 @@
 footer{
     background-color: white;
-    color: black;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     height: 40px;
-
-    text-align: center;
+    color: black;
+    width: 100%;
+    box-shadow: 4px 4px 4px 4px #00000055;
+    position: fixed;
+    bottom: 0;
     
     
 }

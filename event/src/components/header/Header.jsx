@@ -1,5 +1,5 @@
 import "./Header.css";
-import Logo from "../../assets/img/logo1.svg";
+import Logo from "../../assets/img/logoevent.png";
 import { Link } from "react-router-dom";
 import Vector from "../../assets/img/Vector.png";
 
@@ -31,6 +31,7 @@ const Header = (props) => {
             </nav>
 
             <div className="login" style={{ display: props.botao_logar }}>
+                
                 <Link href="" to="/" className="logar">Logar</Link>
             </div>
 

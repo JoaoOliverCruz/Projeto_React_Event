@@ -2,7 +2,7 @@ import "./Footer.css";
 const Footer = () =>{
     return(
         <footer>
-            <p>Escola Senai de Informática 2023</p>
+             <p> © 2025 - Projetos Events SENAI - Todos os direitos reservados.</p>
         </footer>
 
     )

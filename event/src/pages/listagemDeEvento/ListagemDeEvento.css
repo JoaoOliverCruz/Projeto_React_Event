@@ -51,7 +51,7 @@
 
 
 .tabelas .cabecalhos th {
-    border-bottom: 1px solid #B51D44;
+    border-bottom: 1px solid #1565C0;
     width: 250px;
     /* margin-top: 40px; */
     padding: 5px 0;
@@ -86,5 +86,5 @@
 }
 
 .lista_eventos h1{
-    border-bottom: 1px solid #B51D44;
+    border-bottom: 1px solid #1565C0;
 }
