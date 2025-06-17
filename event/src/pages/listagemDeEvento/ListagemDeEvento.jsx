@@ -88,20 +88,22 @@ const ListagemDeEvento = () => {
         try {
             // console.log("aaaaaaa");
             
-            if (presenca && idPresenca !== "") {
+            if (presenca && idPresenca !== "") { 
                 //atualizacao: para FALSE
-                await api.put(`PresencasEventos/${idPresenca}`,{situacao: false});
-                Swal.fire('Removido!', 'Sua presença foi removida.', 'success');
-            } else if (idPresenca !== ""){
+                await api.put(`PresencasEventos/${idPresenca}`, {situacao: false});
+                Swal.fire('Removido!', 'Sua presença foi removida.', 'error');  
+
+                
+            } else if (idPresenca && idPresenca){
                 //atualizacao: situacao TRUE
-                await api.put(`PresencasEventos/${idPresenca}`, {situacao: true});
-                Swal.fire('Confirmado!', 'Sua presença foi confirmada.', 'success');
+                await api.put(`PresencasEventos/${idPresenca}`,{situacao: true});
+                
+                Swal.fire('Confirmada!', 'Sua presença foi confirmada.', 'success');
             }else{
                 //cadastrar uma nova presenca
                 await api.post("PresencasEventos", {situacao: true, idUsuario: usuario.idUsuario, idEvento: idEvento });
                 Swal.fire('Confirmado!', 'Sua presenca foi confirmada.', 'success');
             }
-
             listarEvento(); 
 
         } catch (error) {
@@ -110,24 +112,19 @@ const ListagemDeEvento = () => {
         }
     }
 
-    function filtrarEventos() {
-        //define a data de hoje
-        const hoje = new Date();
+   function filtrarEventos() {
+    const hoje = new Date();
 
-        return listaEvento.filter(evento => {
-            const dataevento = new Date(evento.dataevento);
+    return listaEvento.filter(evento => {
+      const dataEvento = new Date(evento.dataEvento);
 
-            if (filtroData.includes("todos")) return true; 
-            if (filtroData.includes("futuros") && dataevento > hoje)
-            return true; 
-        if (filtroData.includes("passados") && dataevento < hoje) 
-            return true;
+      if (filtroData.includes("todos")) return true;
+      if (filtroData.includes("futuros") && dataEvento > hoje) return true;
+      if (filtroData.includes("passados") && dataEvento < hoje) return true;
 
-            return false;
-        });
-
-        
-    }
+      return false;
+    });
+  }
 
 
     return (
@@ -162,7 +159,7 @@ const ListagemDeEvento = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {filtrarEventos() && filtrarEventos().map((item) => (
+                                {filtrarEventos().map((item) => (
                                     <tr className="itens">
                                         <td data-cell="Titulo">{item.nomeEvento}</td>
                                         <td data-cell="Data">{item.dataEvento ? format(new Date(item.dataEvento), "dd/MM/yyyy", { locale: ptBR }) : ""}
@@ -177,8 +174,10 @@ const ListagemDeEvento = () => {
                                         </button>
                                         </td>
                                         <td data-cell="Participar">
-                                            <Toggle presenca={item.possuiPresenca} 
-                                            metodo = {() => manipularPresenca(item.idEvento, item.presenca, item.idPresenca)}/>
+                                            <Toggle 
+                                            presenca={item.possuiPresenca} 
+                                            metodo = {() => manipularPresenca(item.idEvento, item.possuiPresenca, item.idPresenca)}
+                                            />
                                         </td>
                                     </tr>
                                 ))

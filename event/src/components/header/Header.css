@@ -69,3 +69,20 @@ header{
 }
 
 
+<<<<<<< HEAD
+=======
+.login{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.logar{
+    color: white;
+    text-decoration: none;
+    background-color: #1565c0;
+     width: 115px;
+    height: 45px;
+    border-radius: 5px;
+}
+
+>>>>>>> 3d9cbf82047867dc2e4d52066d5697e752ca2378
