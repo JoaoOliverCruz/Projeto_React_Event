@@ -21,14 +21,15 @@ import api from "../../Services/services"
 
 useEffect(() => {
     listarComentario();
-}, [])
+}, [props.idEvento])
 
  async function cadastrarComentario(comentario) {
     try {
         await api.post("ComentariosEventos",{
             idUsuario: usuarioId,
-            idEvento: props. idEvento,
-            Descricao: comentario})
+            idEvento: props.idEvento,
+            descricao: comentario
+        })
     } catch (error) {
         console.log(error);
     }
@@ -68,8 +69,9 @@ useEffect(() => {
                         value={novoComentario}
                         onChange={(e) => setNovoComentario(e.target.value)}
                         />
-                        <button onClick={() => cadastrarComentario(novoComentario)}>
-                            Cadastrar
+                        <button
+                         onClick={() => cadastrarComentario(novoComentario)}>
+                         Cadastrar
                         </button>
                     </div>
                 </>
