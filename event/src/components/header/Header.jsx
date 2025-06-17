@@ -26,12 +26,16 @@ const Header = (props) => {
 
             <nav className="nav_img" style={{ display: props.visibilidade}}>
                 <div className="adm">
-                <a href="#">{props.tituloHeader}<img src= {Vector} alt="portinha"/></a>
+                {/* <a href="">{props.tituloHeader}<img src= {Vector} alt="portinha"/></a> */}
+                <Link to="/Home"><img src= {Vector} alt="portinha"/></Link>
                 </div>
             </nav>
 
             <div className="login" style={{ display: props.botao_logar }}>
-                <Link href="" to="/" className="logar">Logar</Link>
+                {/* <Link href="" to="/">Logar</Link> */}
+                <button className="logar">
+                    Logar
+                </button>
             </div>
 
         </div>

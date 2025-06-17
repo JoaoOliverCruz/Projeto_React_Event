@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import ImgDeletar from '../../assets/img/Vector (5).png';
 import "./Modal.css";
 import api from "../../Services/services"
+import { useAuth } from '../../contexts/AuthContext';
 
  const Modal = (props) => {
 
  const [comentarios, setComentarios] = useState([]);
  const [novoComentario, setNovoComentario] = useState("");
- const [usuarioId, setUsuariId] = useState("91444B5C-A2C0-4AA3-B866-FCC6D508B6C8");
+ 
+ const {usuario} = useAuth();
 
  async function listarComentario() {
     try {
@@ -21,15 +23,16 @@ import api from "../../Services/services"
 
 useEffect(() => {
     listarComentario();
-}, [props.idEvento])
+}, [])
 
  async function cadastrarComentario(comentario) {
     try {
         await api.post("ComentariosEventos",{
-            idUsuario: usuarioId,
+            idUsuario: usuario.idUsuario,
             idEvento: props.idEvento,
             descricao: comentario
         })
+        listarComentario();
     } catch (error) {
         console.log(error);
     }
@@ -38,6 +41,7 @@ useEffect(() => {
  async function deletarComentario(idComentario) {
     try {
         await api.delete(`ComentariosEventos/${idComentario}`);
+        listarComentario();
     } catch (error) {
         console.log(error);
         

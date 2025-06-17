@@ -68,3 +68,18 @@ header{
     
 }
 
+
+.login{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.logar{
+    color: white;
+    text-decoration: none;
+    background-color: #1565c0;
+     width: 115px;
+    height: 45px;
+    border-radius: 5px;
+}
+

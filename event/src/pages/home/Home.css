@@ -50,7 +50,7 @@
 .item {
     width: 250px;
     height: 250px;
-    border: solid #b51d44 2px;
+    border: solid #1565c0 2px;
     border-radius: 5px;
     padding: 30px;
     margin-bottom: 60px;
@@ -75,7 +75,7 @@
     border: none;
     background-color: white;
     font-size: 18px;
-    color: #B51D44;
+    color: #1565c0;
 }
 
 .visao img {
