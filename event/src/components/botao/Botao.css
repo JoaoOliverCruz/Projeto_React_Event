@@ -12,3 +12,9 @@
     font-weight: bolder;
     /* font-family: 'Poppins'; */
 }
+@media screen and (max-width: 360) {
+    .botao{
+        width: 100px;
+    }
+    
+}

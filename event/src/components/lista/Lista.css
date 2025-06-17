@@ -136,6 +136,18 @@
     .item_lista td:first-child{
         margin-top: 24px;
     }
+    .campo_cad_data  {
+        display: none;
+    }
+    .campo_cad_descricao{
+        display:none;
+    }
+    .campo_cad_instituicao{
+        display: none;
+    }
+    .section_cadastro img{
+        display: none;
+    }
 }
 
     .tabela p{

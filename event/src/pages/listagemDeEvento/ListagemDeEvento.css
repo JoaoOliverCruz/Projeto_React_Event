@@ -1,4 +1,3 @@
-
 .lista_eventos {
     height: 120vh;
     width: 100%;
@@ -7,7 +6,6 @@
     align-items: center;
     padding: 40px 0;
     color: black;
-    
 }
 
 .itens img {
@@ -18,62 +16,42 @@
     width: 80%;
     margin-top: 40px;
     text-align: center;
-   
     margin-left: -60px;
-
 }
-
 
 .tabelas .cabecalhos :first-child {
     width: 300px;
-    
-    
 }
-
 .tabelas .cabecalhos :nth-child(2) {
     width: 770px;
 }
-
 .tabelas .cabecalhos :nth-child(3) {
     width: 760px;
     text-align: start;
-    
-
 }
 
 .tabelas .itens :nth-child(3) {
     width: 760px;
     text-align: start;
-
 }
-
-
-
 
 .tabelas .cabecalhos th {
     border-bottom: 1px solid #1565C0;
     width: 250px;
-    /* margin-top: 40px; */
     padding: 5px 0;
-    
 }
 
-.tabelas table{
+.tabelas table {
     border-collapse: collapse;
-} 
+}
 
 .itens td {
     padding: 28px 0 0 1px;
     border-bottom: 1px solid black;
 }
 
-
-
 .select {
     border: none;
-    border-left: none;
-    border-right: none;
-    border-top: none;
     outline: none;
     padding: 0 5px;
     width: 355px;
@@ -82,9 +60,79 @@
     color: black;
     display: flex;
     border-bottom: 1px solid #201849;
-    
 }
 
-.lista_eventos h1{
+.lista_eventos h1 {
     border-bottom: 1px solid #1565C0;
+}
+
+
+/* RESPONSIVO PARA TELAS ATÉ 360PX */
+/* ... Seu CSS original permanece igual ... */
+
+/* RESPONSIVO PARA TELAS ATÉ 360PX */
+@media (max-width: 360px) {
+    .lista_eventos {
+        padding: 20px 10px;
+        height: auto;
+    }
+
+    .tabelas {
+        width: 100%;
+        margin-left: 0;
+        overflow-x: auto;
+    }
+
+    .tabelas table {
+        width: 100%;
+    }
+
+    .tabelas .cabecalhos th,
+    .itens td {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+
+    .select {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .lista_eventos h1 {
+        font-size: 18px;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    /* ESCONDER TODAS AS COLUNAS, EXCETO AS 3 DESEJADAS */
+
+    /* Oculta todos os cabeçalhos e células */
+    .tabelas .cabecalhos th,
+    .itens td {
+        display: none;
+    }
+
+    /* Exibe apenas as colunas desejadas (ajuste conforme a posição real) */
+    .tabelas .cabecalhos th:nth-child(1),  /* Título */
+    .tabelas .cabecalhos th:nth-child(2),  /* Tipo de evento */
+    .tabelas .cabecalhos th:nth-child(4),  /* Participar */
+    .itens td:nth-child(1),                /* Título */
+    .itens td:nth-child(2),                /* Tipo de evento */
+    .itens td:nth-child(4) {               /* Participar */
+        display: table-cell;
+    }
+
+    /* Ajuste de layout das colunas visíveis */
+    .tabelas .cabecalhos th:nth-child(1),
+    .tabelas .cabecalhos th:nth-child(2),
+    .tabelas .cabecalhos th:nth-child(4),
+    .itens td:nth-child(1),
+    .itens td:nth-child(2),
+    .itens td:nth-child(4) {
+        width: auto;
+        text-align: center;
+    }
+    .nav_header{
+        
+    }
 }

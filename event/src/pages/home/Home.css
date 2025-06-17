@@ -1,10 +1,10 @@
+/* CSS ORIGINAL */
 .home_section {
     height: 100%;
 }
 
 .pagina_home {
     width: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,6 +45,8 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .item {
@@ -68,7 +70,7 @@
 }
 
 .item p {
-    font-size: 16px
+    font-size: 16px;
 }
 
 .item button {
@@ -116,3 +118,46 @@
     margin-bottom: 30px;
 }
 
+/* RESPONSIVIDADE PARA CELULARES COM LARGURA MÁXIMA DE 360PX */
+@media (max-width: 360px) {
+    .eventos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .item h1 {
+        font-size: 16px;
+    }
+
+    .item p {
+        font-size: 14px;
+    }
+
+    .item button {
+        font-size: 16px;
+    }
+
+    .titulo h1,
+    .titulo_2 h1 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .titulo hr,
+    .titulo_2 hr {
+        width: 80px;
+    }
+
+    .mapa_informacoes {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
