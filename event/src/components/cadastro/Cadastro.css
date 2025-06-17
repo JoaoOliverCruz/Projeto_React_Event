@@ -36,8 +36,15 @@
     font-size: 16px;
 }
 
+.campos_cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 .campo_cad_nome input{
-    margin-bottom: 70px;
+    margin-bottom: 40px;
     width: 356px;
     border-top: none;
     border-left: none;
@@ -46,7 +53,7 @@
 }
 
 .campo_cad_data input{
-    margin-bottom: 70px;
+    margin-bottom: 40px;
     width: 356px;
     border-top: none;
     border-left: none;
@@ -55,7 +62,7 @@
 }
 
 .campo_cad_instituicao select{
-    margin-bottom: 70px;
+    margin-bottom: 40px;
     width: 356px;
     border-top: none;
     border-left: none;
@@ -74,7 +81,7 @@
 }
 
 .campo_cad_tipoevento select{
-    margin-bottom: 70px;
+    margin-bottom: 40px;
     width: 356px;
     border-top: none;
     border-left: none;
