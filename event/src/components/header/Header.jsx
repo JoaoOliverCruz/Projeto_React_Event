@@ -32,15 +32,10 @@ const Header = (props) => {
             </nav>
 
             <div className="login" style={{ display: props.botao_logar }}>
-<<<<<<< HEAD
-                
-                <Link href="" to="/" className="logar">Logar</Link>
-=======
                 {/* <Link href="" to="/">Logar</Link> */}
                 <button className="logar">
                     Logar
                 </button>
->>>>>>> 3d9cbf82047867dc2e4d52066d5697e752ca2378
             </div>
 
         </div>

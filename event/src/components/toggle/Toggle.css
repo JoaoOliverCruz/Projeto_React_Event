@@ -40,20 +40,12 @@
 }
 
 input:checked + .slider {
-<<<<<<< HEAD
-  background-color: #1565C0;
-=======
   background-color: #1565c0;
->>>>>>> 3d9cbf82047867dc2e4d52066d5697e752ca2378
   
 }
 
 input:focus + .slider {
-<<<<<<< HEAD
-  box-shadow: 0 0 1px #1565C0;
-=======
   box-shadow: 0 0 1px #1565c0;
->>>>>>> 3d9cbf82047867dc2e4d52066d5697e752ca2378
 }
 
 input:checked + .slider:before {
