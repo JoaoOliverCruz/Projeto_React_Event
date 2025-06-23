@@ -83,7 +83,7 @@ header{
     border-radius: 5px;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 768px) {
     .nav_header,
     .link_header,
     .adm,
