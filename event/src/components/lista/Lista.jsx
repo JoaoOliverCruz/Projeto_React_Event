@@ -43,7 +43,7 @@ const Lista = (props) => {
                             ))
                         ) :
                             (
-                                <p>Nenhum Tipo Evento foi encontrado.</p>
+                                <p class="paragrafo">Nenhum Tipo Evento foi encontrado.</p>
                             )
                         }
 

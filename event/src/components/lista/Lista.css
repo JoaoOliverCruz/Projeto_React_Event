@@ -64,7 +64,7 @@
 
 .tabela table{
    width: 65%;
-   margin-left: 350px;
+   margin-left: auto;
    border-collapse: collapse;
     
 }
@@ -91,7 +91,6 @@
 
 .item_lista td{
     padding: 20px 0 5px 0;
-
     color: white;
 }
 
@@ -154,5 +153,10 @@
         color: white;
     }
 
+.paragrafo {
+
+    overflow-x: hidden;
+
+}
 
 

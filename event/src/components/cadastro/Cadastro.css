@@ -1,19 +1,16 @@
-
 .cadastro_titulo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
     font-size: 16px;
     margin-top: 30px;
     margin-bottom: 4px;
-    
-
 }
 
 .cadastro_titulo h1 {
     font-size: 30px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .cadastro_titulo hr {
@@ -22,92 +19,109 @@
     margin-bottom: 90px;
 }
 
-
 .form_cadastro {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    
-    /* flex-direction: column; */
+    padding: 0 20px;
 }
 
 .form_cadastro h1 {
     text-transform: uppercase;
     font-size: 16px;
+    text-align: center;
 }
 
-.campos_cadastro{
+.campos_cadastro {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
 }
 
-.campo_cad_nome input{
-    margin-bottom: 40px;
-    width: 356px;
+.campo_cad_nome input,
+.campo_cad_data input,
+.campo_cad_instituicao select,
+.campo_cad_tipoevento select {
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 356px;
     border-top: none;
     border-left: none;
     border-right: none;
     outline: none;
-}
-
-.campo_cad_data input{
-    margin-bottom: 40px;
-    width: 356px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    outline: none;
-}
-
-.campo_cad_instituicao select{
-    margin-bottom: 40px;
-    width: 356px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    outline: none;
+    padding: 8px 0;
 }
 
 .campo_cad_descricao textarea {
-    margin-bottom: 40px;
-    width: 356px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 356px;
     border-top: none;
     border-left: none;
     border-right: none;
     outline: none;
-
-}
-
-.campo_cad_tipoevento select{
-    margin-bottom: 40px;
-    width: 356px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    outline: none;
+    min-height: 80px;
+    resize: vertical;
 }
 
 .img_cadastro {
-    height: 238px;
-    width: 436px;
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+    max-width: 436px;
+    margin-top: 30px;
 }
 
 .section_cadastro {
-    height: 400px;
-    margin-bottom: 250px;
+    min-height: 400px;
+    margin-bottom: 50px;
+    padding: 0 15px;
 }
 
-@media screen and (max-width: 880px) {
-    .campos_cadastro{
-        flex-direction: column;
-        align-items: center;
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    .form_cadastro {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .img_cadastro {
+        margin-top: 0;
+        margin-left: 30px;
     }
 }
 
-@media screen and (max-width: 340px) {
-    .form_cadastro h1{
+@media screen and (max-width: 480px) {
+    .cadastro_titulo h1 {
+        font-size: 24px;
+    }
+    
+    .cadastro_titulo hr {
+        margin-bottom: 50px;
+    }
+    
+    .form_cadastro h1 {
+        font-size: 14px;
+    }
+    
+    .campo_cad_nome input,
+    .campo_cad_data input,
+    .campo_cad_instituicao select,
+    .campo_cad_tipoevento select,
+    .campo_cad_descricao textarea {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .cadastro_titulo h1 {
         font-size: 20px;
+    }
+    
+    .form_cadastro h1 {
+        font-size: 12px;
     }
 }
