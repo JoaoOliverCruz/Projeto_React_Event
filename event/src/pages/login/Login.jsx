@@ -28,7 +28,7 @@ const Login = () => {
             email: email,
             senha: senha
         }
-        if (senha.trim() != "" || email.trim() != "") {
+        if (senha.trim() !== "" || email.trim() !== "") {
             try {
                 const resposta = await api.post("Login", usuario);
 
@@ -46,7 +46,20 @@ const Login = () => {
                     secureLocalStorage.setItem("tokenLogin", JSON.stringify(tokenDecodificado));
                     
                     if(tokenDecodificado.tipoUsuario === "aluno"){
-                        navigate("/ListarEventos")
+                        Swal.fire({
+                            title: 'Redirecionando...',
+                            text: 'Você será redirecionado em 5 segundos.',
+                            icon: 'info',
+                            timer: 5000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            },
+                            willClose: () => {
+                                // Redireciona após o alerta fechar
+                            navigate("/ListarEventos")
+                        }
+                    });
                  } else {
                         navigate("/Cadastro")
                 }

@@ -67,11 +67,11 @@
 }
 
 
-/* RESPONSIVO PARA TELAS ATÉ 360PX */
+/* RESPONSIVO PARA TELAS ATÉ 390PX */
 /* ... Seu CSS original permanece igual ... */
 
-/* RESPONSIVO PARA TELAS ATÉ 360PX */
-@media (max-width: 360px) {
+/* RESPONSIVO PARA TELAS ATÉ 390PX */
+@media (max-width: 390px) {
     .lista_eventos {
         padding: 20px 10px;
         height: auto;
@@ -132,7 +132,5 @@
         width: auto;
         text-align: center;
     }
-    .nav_header{
-        
-    }
+
 }

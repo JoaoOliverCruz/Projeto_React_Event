@@ -118,8 +118,8 @@
     margin-bottom: 30px;
 }
 
-/* RESPONSIVIDADE PARA CELULARES COM LARGURA MÁXIMA DE 360PX */
-@media (max-width: 360px) {
+/* RESPONSIVIDADE PARA CELULARES COM LARGURA MÁXIMA DE 390PX */
+@media (max-width: 390px) {
     .eventos {
         flex-direction: column;
         align-items: center;
