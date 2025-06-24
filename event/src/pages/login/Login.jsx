@@ -60,13 +60,27 @@ const Login = () => {
                             navigate("/ListarEventos")
                         }
                     });
-                 } else {
+                 } else if(tokenDecodificado.tipoUsuario === "admin") {
+                    Swal.fire({
+                            title: 'Redirecionando...',
+                            text: 'Você será redirecionado em 5 segundos.',
+                            icon: 'info',
+                            timer: 5000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            },
+                            willClose: () => {
                         navigate("/Cadastro")
-                }
-              }
-             console.log(resposta.data.token);
+                                            }
+                                            
+                                        }
+                                    );
+                                    console.log(resposta.data.token);
+
+             
                 
-            } catch (error) {
+            }}} catch (error) {
                 console.log(error);
                alert("Email ou senha inválidos, para dúvidas, entre em contato com o suporte")
             }

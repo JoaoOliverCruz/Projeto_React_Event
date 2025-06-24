@@ -14,7 +14,7 @@ const CadastroEvento = () => {
     const[dataEvento, setDataevento] = useState("");
     const[descricao, setDescricao] = useState("");
     const[tiposevento, setTipoEvento] = useState("");
-    const[instituicao, setInstituicao] = useState("444DAC6D-4CED-4D77-9B2D-90D667E8820B");
+    const[instituicao, setInstituicao] = useState("9007666F-F8E5-4FCA-9806-DDCCBF33A3F3");
     const[listaTipoEvento, setListaTipoEvento] = useState([]);
     const[listaEvento, setListaEvento] = useState([]);
 
@@ -89,36 +89,36 @@ const CadastroEvento = () => {
     }
 }
 
-    async function deletarEvento(id) {
+    // async function deletarEvento(id) {
 
-        Swal.fire({
-            title: "Voce tem certeza?",
-            text: "voce apagará isso para sempre!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            cancelButtonText: "Não Deletar!",
-            confirmButtonText: "Sim, Deletar isso!"
-    }).then(async (result) => {
-        if (result.isConfirmed) {
-            try {
-                await api.delete(`Eventos/${id.idEvento}`);
+    //     Swal.fire({
+    //         title: "Voce tem certeza?",
+    //         text: "voce apagará isso para sempre!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         cancelButtonText: "Não Deletar!",
+    //         confirmButtonText: "Sim, Deletar isso!"
+    // }).then(async (result) => {
+    //     if (result.isConfirmed) {
+    //         try {
+    //             await api.delete(`Eventos/${id.idEvento}`);
                 
-            } catch (error) {
-                console.log(error);
+    //         } catch (error) {
+    //             console.log(error);
                 
-            }
+    //         }
 
-        Swal.fire({
-        title: "Deletado!!",
-        text: "Um Tipo Evento Foi Excluído.",
-        icon: "success"
-        });
-    }
-    listarEvento();   
-    });
-}
+    //     Swal.fire({
+    //     title: "Deletado!!",
+    //     text: "Um Tipo Evento Foi Excluído.",
+    //     icon: "success"
+    //     });
+    // }
+//     listarEvento();   
+//     });
+// }
 
     async function editarEvento(evento) {
   try {
@@ -255,7 +255,7 @@ const CadastroEvento = () => {
             descricao = {descricaoEvento}
             tipoLista = "Eventos"
 
-            deletar = {deletarEvento}
+            // deletar = {deletarEvento}
 
         />
         </main>

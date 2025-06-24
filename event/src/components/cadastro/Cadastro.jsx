@@ -1,6 +1,8 @@
 
 import "./Cadastro.css";
 import Botao from "../botao/Botao";
+import setInstituicao from "./../../pages/cadastroEventos/CadastroEvento"
+import Instituicao from "./../../pages/cadastroEventos/CadastroEvento"
 
 const Cadastro = (props) => {
     return (
@@ -55,7 +57,7 @@ const Cadastro = (props) => {
                             value={props.valorSelect2}
                             onChange={(e) => props.setValorText(e.target.value)}
                             >
-                            <option selected disabled value="">WorldSKills</option>
+                            <option selected disabled value="">Senai</option>
                         </select>
                     </div>
 
