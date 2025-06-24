@@ -5,6 +5,7 @@ import Vector from "../../assets/img/Vector.png";
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
+
 const Header = (props) => {
     const [menuAberto, setMenuAberto] = useState(false);
     const { usuario, logout } = useAuth();

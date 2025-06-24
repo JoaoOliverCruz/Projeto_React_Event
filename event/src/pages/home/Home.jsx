@@ -4,7 +4,6 @@ import './Home.css';
 
 import Banner from "../../assets/img/homeazul.png";
 import Mapa from "../../assets/img/mapaazul.png";
-import Visao from "../../assets/img/Group 3.png";
 
 const Home = () => {
     return (
@@ -57,10 +56,17 @@ const Home = () => {
                             </article>
                         </div>
                     </div>
-
+                
+                    
                     <div className="visao">
-                        <img src={Visao} alt="" />
+                        <div className="titulohome">
+                        <h1 className="titulohome">Visão</h1>
+                        <hr />
+                        </div>
+                        <p id="texto"> Somos um site focado para eventos de todos os tipos caso queira saber um pouco a mais sobre nós, deixamos a nossa localzação aqui em baixo para vocês, vale a pena participar de novo.
+                        </p>
                     </div>
+                    
 
                     <div className="contato">
                         <div className="titulo_2">

@@ -57,9 +57,7 @@
     width: 100%;
     margin-top: 30px;
     color: white;
-    margin-right: 10px;
-    
-
+    margin-right: 350px;
 }
 
 .tabela table{
@@ -81,12 +79,11 @@
     width: 200px;
 }
 
-.cabecalho_tabela th {
+.cabecalho_tabela th  {
     width: 100px;
 
     font-weight: 500;
 }
-
 
 
 .item_lista td{
