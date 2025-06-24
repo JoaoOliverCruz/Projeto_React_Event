@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Vector from "../../assets/img/Vector.png";
 import { useEffect, useState } from "react";
 
+
 const Header = (props) => {
     const [menuAberto, setMenuAberto] = useState(false);
     const [tipoUsuario, setTipoUsuario] = useState("");

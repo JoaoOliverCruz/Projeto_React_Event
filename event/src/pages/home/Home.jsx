@@ -4,7 +4,6 @@ import './Home.css';
 
 import Banner from "../../assets/img/homeazul.png";
 import Mapa from "../../assets/img/mapaazul.png";
-import Visao from "../../assets/img/Group 3.png";
 
 const Home = () => {
     return (
@@ -64,8 +63,7 @@ const Home = () => {
                         <h1 className="titulohome">Visão</h1>
                         <hr />
                         </div>
-
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eum, soluta non quia aliquid explicabo repellat provident odit facilis voluptates repellendus veniam quaerat similique magnam maiores. Necessitatibus voluptatem perspiciatis sit?
+                        <p id="texto"> Somos um site focado para eventos de todos os tipos caso queira saber um pouco a mais sobre nós, deixamos a nossa localzação aqui em baixo para vocês, vale a pena participar de novo.
                         </p>
                     </div>
                     
