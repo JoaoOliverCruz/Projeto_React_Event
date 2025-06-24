@@ -138,7 +138,7 @@
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 390px) {
     .cadastro_titulo h1 {
         font-size: 20px;
     }
