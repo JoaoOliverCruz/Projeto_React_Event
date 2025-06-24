@@ -1,20 +1,56 @@
-.botao{
-    /* padding: 5px 100px; */
-    width: 350px;
+.botao {
+    width: 100%;
+    max-width: 350px; /* Largura máxima */
+    min-width: 200px; /* Largura mínima */
     height: 40px;
     border: none;
     cursor: pointer;
     background-color: #1565C0;
     color: white;
     border-radius: 7px;
-    
-    /* Negrito */
     font-weight: bolder;
-    /* font-family: 'Poppins'; */
+    font-size: 16px;
+    padding: 0 20px; /* Padding horizontal para textos maiores */
+    margin: 10px 0; /* Margem para evitar sobreposição */
+    transition: all 0.3s ease; /* Suaviza efeitos hover/focus */
+    display: block; /* Para centralização */
+    margin-left: auto;
+    margin-right: auto;
 }
-@media screen and (max-width: 360) {
-    .botao{
-        width: 100px;
+
+/* Efeitos de interação */
+.botao:hover {
+    background-color: #0d47a1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.botao:active {
+    transform: translateY(0);
+}
+
+/* Media Queries para diferentes tamanhos de tela */
+@media screen and (max-width: 768px) {
+    .botao {
+        max-width: 280px;
+        height: 45px; /* Mais fácil para toque em mobile */
+        font-size: 15px;
     }
-    
+}
+
+@media screen and (max-width: 480px) {
+    .botao {
+        max-width: 240px;
+        height: 42px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .botao {
+        max-width: 200px;
+        height: 40px;
+        font-size: 13px;
+        padding: 0 15px;
+    }
 }

@@ -129,6 +129,7 @@ header{
 
   .menu-toggle {
     display: block;
+    margin-bottom: 10px;
   }
 
   .cabecalho {
@@ -142,5 +143,6 @@ header{
 
   .nav_mobile {
     display: flex;
+    margin-bottom: 10px;
   }
 }

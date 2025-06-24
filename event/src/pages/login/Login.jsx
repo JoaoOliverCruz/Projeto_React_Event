@@ -13,81 +13,48 @@ import {useAuth} from "../../contexts/AuthContext";
 
 
 const Login = () => {
-    const [email, setEmail]  = useState("");
+    const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-
     const navigate = useNavigate();
-
-    const {setUsuario} = useAuth();
-    
+    const { setUsuario } = useAuth();
 
     async function realizarAutenticacao(e) {
         e.preventDefault();
 
-        const usuario = {
-            email: email,
-            senha: senha
+        if (!email.trim() || !senha.trim()) {
+            alert("Preencha todos os campos para realizar o login");
+            return;
         }
-        if (senha.trim() !== "" || email.trim() !== "") {
-            try {
-                const resposta = await api.post("Login", usuario);
 
-                const token = resposta.data.token
-                if(token){
-                    //token será decodificado
-                    const tokenDecodificado = userDecodeToken(token);
-                    // console.log("Token decodificado:");
-                    // console.log(tokenDecodificado);
-                    // console.log("O tipo de usuario e:");
-                    // console.log(tokenDecodificado.tipoUsuario);
-
-                    setUsuario(tokenDecodificado);
-
-                    secureLocalStorage.setItem("tokenLogin", JSON.stringify(tokenDecodificado));
-                    
-                    if(tokenDecodificado.tipoUsuario === "aluno"){
-                        Swal.fire({
-                            title: 'Redirecionando...',
-                            text: 'Você será redirecionado em 5 segundos.',
-                            icon: 'info',
-                            timer: 5000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading();
-                            },
-                            willClose: () => {
-                                // Redireciona após o alerta fechar
-                            navigate("/ListarEventos")
-                        }
-                    });
-                 } else if(tokenDecodificado.tipoUsuario === "admin") {
-                    Swal.fire({
-                            title: 'Redirecionando...',
-                            text: 'Você será redirecionado em 5 segundos.',
-                            icon: 'info',
-                            timer: 5000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading();
-                            },
-                            willClose: () => {
-                        navigate("/Cadastro")
-                                            }
-                                            
-                                        }
-                                    );
-                                    console.log(resposta.data.token);
-
-             
+        try {
+            const resposta = await api.post("Login", { email, senha });
+            const token = resposta.data.token;
+            
+            if (token) {
+                const tokenDecodificado = userDecodeToken(token);
+                setUsuario(tokenDecodificado);
                 
-            }}} catch (error) {
-                console.log(error);
-               alert("Email ou senha inválidos, para dúvidas, entre em contato com o suporte")
+                // Salva em ambos os storages para garantir compatibilidade
+                secureLocalStorage.setItem("token", token);
+                secureLocalStorage.setItem("tipoUsuario", tokenDecodificado.tipoUsuario);
+                localStorage.setItem("tipoUsuario", tokenDecodificado.tipoUsuario); // Para o Header
+                
+                const redirectPath = tokenDecodificado.tipoUsuario === "admin" 
+                    ? "/CadastrarTipoEvento" 
+                    : "/ListarEventos";
+                
+                Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'Login realizado com sucesso!',
+                    icon: 'success',
+                    timer: 2000,
+                    willClose: () => navigate(redirectPath)
+                });
             }
-        } else {
-            alert("Preencha os campos vazios para realizar o login seu dedin nervoso")
+        } catch (error) {
+            console.error(error);
+            alert("Email ou senha inválidos. Para dúvidas, entre em contato com o suporte");
         }
-
     }
 
 

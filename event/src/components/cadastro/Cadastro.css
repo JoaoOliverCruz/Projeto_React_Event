@@ -99,9 +99,7 @@
     margin-bottom: 50px;
     padding: 0 15px;
 }
-.campos_cadastro button {
-    margin-left: 17%;
-}
+
 
 /* Media Queries */
 @media screen and (min-width: 768px) {

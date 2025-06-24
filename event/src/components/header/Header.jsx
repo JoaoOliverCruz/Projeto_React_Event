@@ -1,85 +1,94 @@
 import "./Header.css";
 import Logo from "../../assets/img/logoevent.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Vector from "../../assets/img/Vector.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Header = (props) => {
     const [menuAberto, setMenuAberto] = useState(false);
-    const [tipoUsuario, setTipoUsuario] = useState("");
-
-    useEffect(() => {
-        const tipo = localStorage.getItem("tipoUsuario");
-        setTipoUsuario(tipo);
-    }, []);
+    const { usuario, logout } = useAuth();
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setMenuAberto(!menuAberto);
     };
 
+    const handleLogout = () => {
+        logout();
+        navigate("/");
+    };
+
     return (
         <header>
             <div className="layout_grid cabecalho">
-                {/* Logo */}
                 <Link to="/Home">
                     <img src={Logo} alt="Logo do EventPlus" />
                 </Link>
 
-                {/* Botão hamburguer visível apenas no mobile */}
                 <button className="menu-toggle" onClick={toggleMenu}>
                     &#9776;
                 </button>
 
-                {/* Menu padrão (desktop) */}
                 <nav className="nav_header">
                     <Link className="link_header" to="/Home">Home</Link>
-                    <Link className="link_header" to="/ListarEventos">Eventos</Link>
-
-                    {tipoUsuario !== "aluno" && (
-                        <Link className="link_header" to="/Usuario">Usuarios</Link>
+                    
+                    {/* Mostra "Eventos" apenas para alunos */}
+                    {usuario?.tipoUsuario !== "admin" && (
+                        <Link className="link_header" to="/ListarEventos">Eventos</Link>
                     )}
 
-                    {tipoUsuario === "admin" && (
+                    {/* Links específicos para admin */}
+                    {usuario?.tipoUsuario === "admin" && (
                         <>
-                            <Link className="link_header" to="/TipoEventos">TipoEventos</Link>
-                            <Link className="link_header" to="/TipoUsuario">TipoUsuario</Link>
+                            <Link className="link_header" to="/Cadastro">CadastroEventos</Link>
+                            <Link className="link_header" to="/CadastrarTipoEvento">TipoEventos</Link>
+                            <Link className="link_header" to="/CadastrarTipoUsuario">TipoUsuario</Link>
                         </>
                     )}
                 </nav>
 
-                {/* Admin link com imagem */}
-                <nav className="nav_img" style={{ display: props.visibilidade }}>
-                    <div className="adm">
-                        <Link to="/Home">
-                            {props.tituloHeader}
-                            <img src={Vector} alt="portinha" />
-                        </Link>
-                    </div>
-                </nav>
+                {usuario && (
+                    <nav className="nav_img">
+                        <div className="adm">
+                            <Link to="/Home">
+                                {props.tituloHeader || (usuario.tipoUsuario === "admin" ? "Admin" : "Aluno")}
+                                <img src={Vector} alt="Ícone do usuário" />
+                            </Link>
+                        </div>
+                    </nav>
+                )}
 
-                {/* Botão Logar */}
-                <div className="login" style={{ display: props.botao_logar }}>
-                    <Link to="/">
-                        <button className="logar">Logar</button>
-                    </Link>
+                <div className="login">
+                    {usuario ? (
+                        <button className="logar" onClick={handleLogout}>Sair</button>
+                    ) : (
+                        <Link to="/">
+                            <button className="logar">Logar</button>
+                        </Link>
+                    )}
                 </div>
             </div>
 
-            {/* Menu Mobile Responsivo */}
             {menuAberto && (
                 <nav className="nav_mobile">
                     <Link to="/Home" onClick={toggleMenu}>Home</Link>
-                    <Link to="/ListarEventos" onClick={toggleMenu}>Eventos</Link>
-
-                    {tipoUsuario !== "aluno" && (
-                        <Link to="/Usuario" onClick={toggleMenu}>Usuarios</Link>
+                    
+                    {/* Mostra "Eventos" apenas para alunos no mobile */}
+                    {usuario?.tipoUsuario !== "admin" && (
+                        <Link to="/ListarEventos" onClick={toggleMenu}>Eventos</Link>
                     )}
 
-                    {tipoUsuario === "admin" && (
+                    {usuario?.tipoUsuario === "admin" && (
                         <>
-                            <Link to="/TipoEventos" onClick={toggleMenu}>TipoEventos</Link>
-                            <Link to="/TipoUsuario" onClick={toggleMenu}>TipoUsuario</Link>
+                            <Link to="/Cadastro" onClick={toggleMenu}>CadastroEventos</Link>
+                            <Link to="/CadastrarTipoEvento" onClick={toggleMenu}>TipoEventos</Link>
+                            <Link to="/CadastrarTipoUsuario" onClick={toggleMenu}>TipoUsuario</Link>
                         </>
+                    )}
+
+                    {usuario && (
+                        <button className="logar" onClick={handleLogout}>Sair</button>
                     )}
                 </nav>
             )}

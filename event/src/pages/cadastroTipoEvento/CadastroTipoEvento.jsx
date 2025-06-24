@@ -166,6 +166,8 @@ useEffect(() => {
 
             tipoLista = "TiposEventos"
 
+            mostrarExcluir={true}
+
         />
         </main>
         <Footer/> 

@@ -160,7 +160,7 @@ const CadastroTipoUsuario = () => {
 
             tipoLista = "TiposUsuarios"
 
-            
+            mostrarExcluir={true}
 
 
         />

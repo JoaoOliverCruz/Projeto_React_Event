@@ -105,6 +105,69 @@
     height: 40px;
    
 }
+/* Lista.css - Versão Atualizada */
+
+.layout_grid.listagem {
+    width: 100%;
+    max-width: 1200px; /* Ajuste conforme necessário */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.tabela {
+    width: 100%;
+    overflow-x: auto; /* Para tabelas muito largas em mobile */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    table-layout: fixed; /* Distribuição uniforme das colunas */
+}
+
+.cabecalho_tabela th {
+    padding: 12px 15px;
+    text-align: center; /* Centraliza cabeçalhos */
+    background-color: #1565C0;
+    font-weight: 600;
+}
+
+.item_lista td {
+    padding: 15px 15px;
+    text-align: center; /* Centraliza conteúdo das células */
+    border-bottom: 1px solid #ffffff;
+}
+
+/* Alinhamento específico para imagens/ícones */
+.item_lista td img {
+    display: block;
+    margin: 0 auto; /* Centraliza ícones */
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+.paragrafo {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cabecalho_tabela th, 
+    .item_lista td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+    
+    .item_lista td img {
+        width: 20px;
+        height: 20px;
+    }
+}
 
 @media screen and (max-width: 768px){
     /* 1px - 768px */

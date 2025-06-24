@@ -10,128 +10,101 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import Modal from "../../components/modal/Modal";
 import Swal from "sweetalert2";
-
-import {useAuth} from "../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 const ListagemDeEvento = () => {
-
     const [listaEvento, setListaEvento] = useState([]);
-    const [tipoModal, seTipoModal] = useState("");
-    //"descricaoEvento" ou "Comentario"
+    const [tipoModal, setTipoModal] = useState("");
     const [dadosModal, setDadosModal] = useState({});
-    //descrição, idEvento, etc.
     const [modalAberto, setModalAberto] = useState(false);
+    const [filtroData, setFiltroData] = useState("todos"); // Alterado para string
 
-    //filtro data
-    const [filtroData, setFiltroData] = useState(["todos"]);
-
-    const {usuario} = useAuth();
-    // const [usuarioId, setUsuarioId] = useState("91444B5C-A2C0-4AA3-B866-FCC6D508B6C8");
-
-
-
-    // const [valorSelectEvento, setvalorSelectEvento] = useState("");
-
+    const { usuario } = useAuth();
 
     async function listarEvento() {
         try {
+            if (!usuario?.idUsuario) return;
+
             const eventoBuscado = await api.get("Eventos");
             const todosOsEventos = eventoBuscado.data;
 
-            const respostaPresenca = await api.get ("PresencasEventos/ListarMinhas/" + usuario.idUsuario);
+            const respostaPresenca = await api.get("PresencasEventos/ListarMinhas/" + usuario.idUsuario);
             const minhasPresencas = respostaPresenca.data;
 
             const eventosComPresencas = todosOsEventos.map((atualEvento) => {
-                const presenca = minhasPresencas.find(p => p.idEvento === atualEvento.idEvento)
+                const presenca = minhasPresencas.find(p => p.idEvento === atualEvento.idEvento);
 
-                return{
-                    //AS INFORMACOES TANTO DE EVENTOS QUANTO DE EVENTOS QUE POSSUEM PRESENCA
-                    ...atualEvento, //mantem os dados originais do evento atual
+                return {
+                    ...atualEvento,
                     possuiPresenca: presenca?.situacao === true,
                     idPresenca: presenca?.idPresencaEvento || null  
-                }
-
-                
-                
-                
-            })
+                };
+            });
             
             setListaEvento(eventosComPresencas);
-            console.log(`Todos os Eventos com presencas:`);
-            console.log(eventosComPresencas);
-
         } catch (error) {
             console.log(error);
-
+            Swal.fire('Erro!', 'Não foi possível carregar os eventos.', 'error');
         }
     }
 
     useEffect(() => {
         listarEvento();
-    }, []);
+    }, [usuario]);
 
     function abrirModal(tipo, dados) {
-        //tipo de modal
-        //os dados do meu modal
         setModalAberto(true);
-        seTipoModal(tipo);
+        setTipoModal(tipo);
         setDadosModal(dados);
     }
 
     function fecharModal() {
         setModalAberto(false);
         setDadosModal({});
-        seTipoModal("");
+        setTipoModal("");
     }
 
     async function manipularPresenca(idEvento, presenca, idPresenca) {
         try {
-            // console.log("aaaaaaa");
-            
-            if (presenca && idPresenca !== "") { 
-                //atualizacao: para FALSE
-                await api.put(`PresencasEventos/${idPresenca}`, {situacao: false});
+            if (presenca && idPresenca) {
+                await api.put(`PresencasEventos/${idPresenca}`, { situacao: false });
                 Swal.fire('Removido!', 'Sua presença foi removida.', 'error');  
-
-                
-            } else if (idPresenca && idPresenca){
-                //atualizacao: situacao TRUE
-                await api.put(`PresencasEventos/${idPresenca}`,{situacao: true});
-                
+            } else if (idPresenca) {
+                await api.put(`PresencasEventos/${idPresenca}`, { situacao: true });
                 Swal.fire('Confirmada!', 'Sua presença foi confirmada.', 'success');
-            }else{
-                //cadastrar uma nova presenca
-                await api.post("PresencasEventos", {situacao: true, idUsuario: usuario.idUsuario, idEvento: idEvento });
-                Swal.fire('Confirmado!', 'Sua presenca foi confirmada.', 'success');
+            } else {
+                await api.post("PresencasEventos", { 
+                    situacao: true, 
+                    idUsuario: usuario.idUsuario, 
+                    idEvento: idEvento 
+                });
+                Swal.fire('Confirmado!', 'Sua presença foi confirmada.', 'success');
             }
-            listarEvento(); 
-
+            listarEvento();
         } catch (error) {
             console.log(error);
-            
+            Swal.fire('Erro!', 'Ocorreu um erro ao processar sua solicitação.', 'error');
         }
     }
 
-   function filtrarEventos() {
-    const hoje = new Date();
-
-    return listaEvento.filter(evento => {
-      const dataEvento = new Date(evento.dataEvento);
-
-      if (filtroData.includes("todos")) return true;
-      if (filtroData.includes("futuros") && dataEvento > hoje) return true;
-      if (filtroData.includes("passados") && dataEvento < hoje) return true;
-
-      return false;
-    });
-  }
-
+    function filtrarEventos() {
+        const hoje = new Date();
+        return listaEvento.filter(evento => {
+            const dataEvento = new Date(evento.dataEvento);
+            
+            if (filtroData === "todos") return true;
+            if (filtroData === "futuros" && dataEvento > hoje) return true;
+            if (filtroData === "passados" && dataEvento < hoje) return true;
+            
+            return false;
+        });
+    }
 
     return (
         <>
             <Header
                 tituloHeader="Aluno"
-                botao_logar = "none"
+                botao_logar="none"
             />
             <main>
                 <section className="layout_grid lista_eventos">
@@ -139,12 +112,15 @@ const ListagemDeEvento = () => {
                     <hr />
 
                     <div className="tabelas">
-                        {/* Select dentro: value={valorSelectEvento} onChange={(e) => setvalorSelectEvento(e.target.value)} */}
-                        <select name="Tipo De Evento" id="" className="select" onChange={(e) => setFiltroData([e.target.value]) }>
-                            <option value="todos" selected> Todos os Evento </option>
+                        <select 
+                            name="Tipo De Evento" 
+                            className="select" 
+                            value={filtroData}
+                            onChange={(e) => setFiltroData(e.target.value)}
+                        >
+                            <option value="todos">Todos os Eventos</option>
                             <option value="futuros">Somente futuros</option>
                             <option value="passados">Somente passados</option>
-
                         </select>
                       
                         <table>
@@ -159,29 +135,31 @@ const ListagemDeEvento = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {filtrarEventos().map((item) => (
-                                    <tr className="itens">
+                                {filtrarEventos().map((item, index) => (
+                                    <tr key={index} className="itens">
                                         <td data-cell="Titulo">{item.nomeEvento}</td>
-                                        <td data-cell="Data">{item.dataEvento ? format(new Date(item.dataEvento), "dd/MM/yyyy", { locale: ptBR }) : ""}
+                                        <td data-cell="Data">
+                                            {item.dataEvento ? format(new Date(item.dataEvento), "dd/MM/yyyy", { locale: ptBR }) : ""}
                                         </td>
                                         <td data-cell="Nome">{item.tiposEvento?.tituloTipoEvento}</td>
-                                        <td data-cell="Descrição"> <button className="icon" onClick={() => abrirModal("descricaoEvento", { descricao: item.descricao })}>
-                                            <img src={Informacoes} alt="" />
-                                        </button>
+                                        <td data-cell="Descrição">
+                                            <button className="icon" onClick={() => abrirModal("descricaoEvento", { descricao: item.descricao })}>
+                                                <img src={Informacoes} alt="Informações" />
+                                            </button>
                                         </td>
-                                        <td data-cell="Comentario"><button className="icon" onClick={() => abrirModal("Comentarios", { idEvento: item.idEvento })}>
-                                            <img src={Comentario} alt="" />
-                                        </button>
+                                        <td data-cell="Comentario">
+                                            <button className="icon" onClick={() => abrirModal("Comentarios", { idEvento: item.idEvento })}>
+                                                <img src={Comentario} alt="Comentários" />
+                                            </button>
                                         </td>
                                         <td data-cell="Participar">
                                             <Toggle 
-                                            presenca={item.possuiPresenca} 
-                                            metodo = {() => manipularPresenca(item.idEvento, item.possuiPresenca, item.idPresenca)}
+                                                presenca={item.possuiPresenca} 
+                                                metodo={() => manipularPresenca(item.idEvento, item.possuiPresenca, item.idPresenca)}
                                             />
                                         </td>
                                     </tr>
-                                ))
-                                }
+                                ))}
                             </tbody>
                         </table>
                     </div>
@@ -193,23 +171,14 @@ const ListagemDeEvento = () => {
             {modalAberto && (
                 <Modal
                     titulomodal={tipoModal === "descricaoEvento" ? "Descrição do Evento" : "Comentário"}
-
-                    //estou verificando o meu tipo modal!
-                    tipoModel = {tipoModal}
-
-                    idEvento = {dadosModal.idEvento}
-
-                    descricao = {dadosModal.descricao}
-
-                    fecharmodal = {fecharModal}
+                    tipoModal={tipoModal}
+                    idEvento={dadosModal.idEvento}
+                    descricao={dadosModal.descricao}
+                    fecharmodal={fecharModal}
                 />
-
             )}
-
         </>
+    );
+};
 
-    )
-}
 export default ListagemDeEvento;
-
-//Atalho para criar componente -> rafce 
