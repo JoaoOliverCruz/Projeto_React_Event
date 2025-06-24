@@ -106,7 +106,7 @@ const ListagemDeEvento = () => {
                 tituloHeader="Aluno"
                 botao_logar="none"
             />
-            <main>
+            <main>  
                 <section className="layout_grid lista_eventos">
                     <h1>Eventos</h1>
                     <hr />
@@ -171,7 +171,7 @@ const ListagemDeEvento = () => {
             {modalAberto && (
                 <Modal
                     titulomodal={tipoModal === "descricaoEvento" ? "Descrição do Evento" : "Comentário"}
-                    tipoModal={tipoModal}
+                    tipoModel={tipoModal}
                     idEvento={dadosModal.idEvento}
                     descricao={dadosModal.descricao}
                     fecharmodal={fecharModal}

@@ -101,5 +101,13 @@ button{
     background-color: transparent;
     border: none;
 }
-
+.botao_comentario{
+    width: 80px;
+    height: 30px;
+    background-color: #1565c0;
+    color: white;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+}
 

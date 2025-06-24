@@ -16,7 +16,7 @@ const Header = (props) => {
     };
 
     const handleLogout = () => {
-        logout();
+        // logout();
         navigate("/");
     };
 
@@ -89,7 +89,7 @@ const Header = (props) => {
                     )}
 
                     {usuario && (
-                        <button className="logar" onClick={handleLogout}>Sair</button>
+                        <Link to="/Home"><button className="logar">Sair</button></Link>
                     )}
                 </nav>
             )}

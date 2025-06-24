@@ -74,6 +74,7 @@ useEffect(() => {
                         onChange={(e) => setNovoComentario(e.target.value)}
                         />
                         <button
+                        className='botao_comentario'
                          onClick={() => cadastrarComentario(novoComentario)}>
                          Cadastrar
                         </button>

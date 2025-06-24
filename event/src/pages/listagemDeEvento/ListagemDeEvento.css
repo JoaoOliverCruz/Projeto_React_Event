@@ -19,24 +19,24 @@
 }
 
 .tabelas .cabecalhos :first-child {
-    width: 300px;
+    width: 200px;
 }
 .tabelas .cabecalhos :nth-child(2) {
-    width: 770px;
+    width: 270px;
 }
 .tabelas .cabecalhos :nth-child(3) {
-    width: 760px;
+    width: 280px;
     text-align: start;
 }
 
 .tabelas .itens :nth-child(3) {
-    width: 760px;
+    width:360px;
     text-align: start;
 }
 
 .tabelas .cabecalhos th {
     border-bottom: 1px solid #1565C0;
-    width: 250px;
+    width: 150px;
     padding: 10px 5px;
     font-size: 16px;
 }
@@ -74,7 +74,7 @@
 }
 
 /* Responsivo para tablets */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     .tabelas .cabecalhos :first-child,
     .tabelas .cabecalhos :nth-child(2),
     .tabelas .cabecalhos :nth-child(3) {
@@ -85,10 +85,10 @@
         width: auto;
         text-align: center;
     }
-}
+} */
 
 /* Responsivo para mobile */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .lista_eventos {
         padding: 20px 15px;
         height: auto;
@@ -103,9 +103,9 @@
     
     .tabelas table {
         min-width: 600px; /* Permite scroll horizontal em tabelas muito largas */
-    }
     
-    .tabelas .cabecalhos th,
+    
+    /* .tabelas .cabecalhos th,
     .itens td {
         padding: 12px 8px;
         font-size: 14px;
@@ -120,11 +120,11 @@
     .lista_eventos h1 {
         font-size: 24px;
         width: 100%;
-    }
-}
+    } */
+
 
 /* Responsivo para telas pequenas (360px) */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
     .lista_eventos h1 {
         font-size: 20px;
     }
@@ -138,24 +138,23 @@
     }
     
     /* Ocultar colunas menos importantes em telas muito pequenas */
-    .tabelas .cabecalhos th:nth-child(3),
+    /* .tabelas .cabecalhos th:nth-child(3),
     .itens td:nth-child(3) {
         display: none;
     }
     
     .itens img {
         height: 16px;
-    }
-}
+    } */
+
 
 /* Estilo para o scroll horizontal em mobile */
-@media (max-width: 768px) {
-    .tabelas::-webkit-scrollbar {
+/* @media (max-width: 768px) {
+    /* .tabelas::-webkit-scrollbar {
         height: 5px;
-    }
+    } */
     
-    .tabelas::-webkit-scrollbar-thumb {
+    /* .tabelas::-webkit-scrollbar-thumb {
         background: #1565C0;
         border-radius: 10px;
-    }
-}
+    } */

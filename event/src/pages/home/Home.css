@@ -99,7 +99,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 285px;
+    text-align: center;
+    margin-left: 350px;
 }
 
 .titulohome h1{
@@ -110,12 +111,12 @@
 }
 
 .titulohome hr{
-     width: 125px;
+    width: 125px;
     border: white solid 1px;
     margin-bottom: 50px; width: 125px;
     border: white solid 1px;
     margin-bottom: 50px;
-    margin-left: 285px;
+    margin-left: 350px;
 }
 
 #texto{
@@ -124,6 +125,7 @@
     align-items: center;
     color: white;
     margin-bottom: 90px;
+    margin-left: 150px;
 }
 
 
