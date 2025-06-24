@@ -24,7 +24,7 @@ const Lista = (props) => {
                             <th style={{display: props.visibilidade}}>Data do Evento</th>
                             <th style={{ display: props.visibilidade }}>Tipo Evento</th>
                             <th>Editar</th>
-                            <th>Excluir</th>
+                            {/* <th>Excluir</th> */}
                             <th style={{display: props.visibilidade}}>Descrição</th>
                         </tr>
                     </thead>
@@ -37,7 +37,7 @@ const Lista = (props) => {
                                     <td data-cell="Data" style={{display: props.visibilidade}}>{item.dataEvento ? format(new Date(item.dataEvento), "dd/MM/yyyy", {locale: ptBR}) : ""}</td>
                                     <td data-cell="Evento" style={{display: props.visibilidade}}>{item.tiposEvento?.tituloTipoEvento}</td>
                                     <td data-cell="Editar"><img src={Editar} alt="Caneta" onClick={() => props.funcEditar(item)} /></td>
-                                    <td data-cell="Excluir"><img src={Excluir} alt="Lixeira" onClick={() => props.deletar(item)} /></td>
+                                    {/* <td data-cell="Excluir"><img src={Excluir} alt="Lixeira" onClick={() => props.deletar(item)} /></td> */}
                                     <td data-cell="Descrição" style={{display: props.visibilidade}}><img src={Informacoes} alt="I" onClick={() => props.descricao(item)}/></td>
                                 </tr>
                             ))
