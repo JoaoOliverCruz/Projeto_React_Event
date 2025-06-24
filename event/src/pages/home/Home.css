@@ -3,6 +3,8 @@
     height: 100%;
 }
 
+
+
 .pagina_home {
     width: 100%;
     display: flex;
@@ -81,9 +83,39 @@
     color: #1565C0;
 }
 
-.visao img {
+section .visao{
+    display: flex;
+    align-items: center;
+    text-align: center;
     width: 100%;
+    background-color: #1565C0;
+    height: 400px;
+
 }
+
+.titulohome{
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulohome h1{
+    margin-top: 30px;
+    border: none;
+    color: white;
+    font-size: 18px;
+}
+
+.titulohome hr{
+     width: 125px;
+    border: white solid 1px;
+    margin-bottom: 50px; width: 125px;
+    border: white solid 1px;
+    margin-bottom: 50px;
+}
+
+
 
 .contato {
     display: flex;

@@ -14,7 +14,7 @@ const CadastroEvento = () => {
     const[dataEvento, setDataevento] = useState("");
     const[descricao, setDescricao] = useState("");
     const[tiposevento, setTipoEvento] = useState("");
-    const[instituicao, setInstituicao] = useState("9007666F-F8E5-4FCA-9806-DDCCBF33A3F3");
+    const[instituicao, setInstituicao] = useState("EFFB7A29-6454-49AC-AF86-AFD4C144B19C");
     const[listaTipoEvento, setListaTipoEvento] = useState([]);
     const[listaEvento, setListaEvento] = useState([]);
 

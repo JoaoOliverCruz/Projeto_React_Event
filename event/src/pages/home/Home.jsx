@@ -57,10 +57,18 @@ const Home = () => {
                             </article>
                         </div>
                     </div>
-
+                
+                    
                     <div className="visao">
-                        <img src={Visao} alt="" />
+                        <div className="titulohome">
+                        <h1 className="titulohome">Visão</h1>
+                        <hr />
+                        </div>
+
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eum, soluta non quia aliquid explicabo repellat provident odit facilis voluptates repellendus veniam quaerat similique magnam maiores. Necessitatibus voluptatem perspiciatis sit?
+                        </p>
                     </div>
+                    
 
                     <div className="contato">
                         <div className="titulo_2">
